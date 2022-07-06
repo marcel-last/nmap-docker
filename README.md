@@ -16,9 +16,9 @@ ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/nmap", "--privileged"]
 ```
 
 ## Libcap and Nmap privileged execution
-Modifications have been made to the 'nmap' binary that allows its to run privileged arguments such as: -sS (Syn Scans) or -u (UDP scans).
-This is acheived by modifiying the Linux capabilities / kernel attributes.
+Modifications have been made to the 'nmap' binary that allows its to run privileged arguments such as: -sS (Syn Scans) or -u (UDP scans) without having the process or container run as root.
 
+This is acheived by modifiying the Linux capabilities / kernel attributes.
 `CAP_NET_RAW` and `CAP_NET_BIND_SERVICE+eip` attributes gives Nmap the privileges it needs to run without checking for root user permissions.
 
 ```dockerfile
