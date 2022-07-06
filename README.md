@@ -1,6 +1,9 @@
 # nmap-docker
 A containerised version [Nmap (Network Mapper)](https://nmap.org/).
 
+# To Do
+- Extract nmap scan output files saved within the containers.
+
 ## Building the container
 ```bash
 docker build -t nmap-docker:latest
