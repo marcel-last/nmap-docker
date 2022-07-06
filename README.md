@@ -16,19 +16,17 @@ ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/nmap", "--privileged"]
 ```
 
 ## Libcap and Nmap privileged execution
-Modifications have been made to the 'nmap' binary that allows its to run privileged arguments such as: -sS (Syn Scans) or -u (UDP scans) without having the process or container run as root.
+Modifications have been made to the 'nmap' binary inside the container that allows its to run privileged arguments such as: -sS (Syn Scans) or -u (UDP scans) without requiring the binary or container to be run as the root user.
 
 This is acheived by modifiying the Linux capabilities / kernel attributes.
+
 `CAP_NET_RAW` and `CAP_NET_BIND_SERVICE+eip` attributes gives Nmap the privileges it needs to run without checking for root user permissions.
 
 ```dockerfile
-RUN
 ...
-apk add --no-cache libcap
+apk add --no-cache libcap && \
 setcap cap_net_raw,cap_net_bind_service+eip $(which nmap)
 ...
-
- ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/nmap", "--privileged"]
 ```
 
 Now that we have these two capabilities set, we can run Nmap without sudo privileges by using the `--privilege` flag to let Nmap know that it has these capabilities.
