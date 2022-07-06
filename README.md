@@ -1,5 +1,5 @@
 # nmap-docker
-A containerised version [Nmap (Network Mapper)](https://nmap.org/).
+A containerised version of [Nmap (Network Mapper)](https://nmap.org/).
 
 # To Do
 - Extract nmap scan output files saved within the containers.
