@@ -11,6 +11,9 @@ docker build -t nmap-docker:latest
 ## Running the container
 ```bash
 docker run --rm nmap-docker <NMAP_ARGS>
+
+## Example:
+docker run --rm nmap-docker -sS -sV -sC 192.168.1.5
 ```
 
 ## Dockerfile Entrypoint
