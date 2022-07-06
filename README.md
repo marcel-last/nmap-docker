@@ -31,4 +31,4 @@ setcap cap_net_raw,cap_net_bind_service+eip $(which nmap)
  ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/nmap", "--privileged"]
 ```
 
-Now that we have these two capabilities set, we can run Nmap without sudo privileges by using the `--privilege` flag to let Nmap know that it has these capabilities. To do that, execute:
+Now that we have these two capabilities set, we can run Nmap without sudo privileges by using the `--privilege` flag to let Nmap know that it has these capabilities.
