@@ -1,5 +1,5 @@
 APP_NAME=nmap-docker
-CONTAINER_TAG="latest"
+CONTAINER_TAG=latest
 
 all: build run
 
